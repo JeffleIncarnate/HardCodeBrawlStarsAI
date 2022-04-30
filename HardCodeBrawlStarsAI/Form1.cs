@@ -44,7 +44,11 @@ namespace HardCodeBrawlStarsAI
         {
             try
             {
-                for (int i = 0; i < 10000; i++)
+                ThreadStart ThreadChild = new ThreadStart(Data);
+                Thread thread = new Thread(ThreadChild);
+                thread.Start();
+
+                while (true)
                 {
                     //Creating a new Bitmap object
                     Bitmap captureBitmap = new Bitmap(1024, 768, PixelFormat.Format32bppArgb);
@@ -64,6 +68,11 @@ namespace HardCodeBrawlStarsAI
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        public void Data()
+        {
+            
         }
     }
 }
