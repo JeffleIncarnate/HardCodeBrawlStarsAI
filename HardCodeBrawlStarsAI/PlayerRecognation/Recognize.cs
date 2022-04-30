@@ -16,5 +16,13 @@ namespace HardCodeBrawlStarsAI.PlayerRecognition
         ///  parameter and then return the strign full with info on the players that 
         ///  it recognises each Frame
         /// </summary>
+        public List<int> AmountOfPlayersSeen()
+        {
+            List<int> players = new List<int>();
+
+            players.Add(0);
+
+            return players;
+        }
     }
 }
