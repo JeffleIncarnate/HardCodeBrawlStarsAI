@@ -1,4 +1,5 @@
-﻿using System;
+﻿// Namespaces that we are using
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,6 +12,7 @@ using System.IO;
 using System.Diagnostics;
 using System.Windows.Forms;
 using System.Threading;
+using HardCodeBrawlStarsAI;
 
 namespace HardCodeBrawlStarsAI
 {
@@ -27,12 +29,15 @@ namespace HardCodeBrawlStarsAI
 
         }
 
+        // This is a method that runs the exe of scrcpy which is a Screen mirroring platform
         private void scrcpy_Click(object sender, EventArgs e)
         {
             string Scrcpy = @"C:\Users\hp\Downloads\scrcpy-win64-v1.23\scrcpy.exe";
             Process.Start(Scrcpy);
         }
 
+        // This is a funciton that starts a new Thread and make a loop that will run
+        // forever so we can screenshot the game
         private void capture_Click(object sender, EventArgs e)
         {
             ThreadStart ChildRef = new ThreadStart(CaptureMyScreen);
@@ -40,6 +45,7 @@ namespace HardCodeBrawlStarsAI
             ChildThread.Start();
         }
 
+        // Void to Capture 
         public void CaptureMyScreen()
         {
             try
@@ -72,7 +78,11 @@ namespace HardCodeBrawlStarsAI
 
         public void Data()
         {
-            
+            PlayerRecognition.Recognize PlRec = new PlayerRecognition.Recognize();
+            PlayerRecognation.ReadJson PlRead = new PlayerRecognation.ReadJson();
+
+            var name = PlRead.PlayerName();
+            MessageBox.Show(name);
         }
     }
 }
