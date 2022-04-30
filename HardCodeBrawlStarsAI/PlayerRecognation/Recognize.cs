@@ -18,11 +18,34 @@ namespace HardCodeBrawlStarsAI.PlayerRecognition
         /// </summary>
         public List<int> AmountOfPlayersSeen()
         {
-            List<int> players = new List<int>();
+            List<int> Players = new List<int>();
 
-            players.Add(0);
+            Players.Add(0);
 
-            return players;
+            return Players;
+        }
+
+        /// <summary>
+        ///  This is a class method to get the names of all the Players Seen each frame 
+        /// </summary>
+        public List<string> NamesOfPlayerSeen()
+        {
+            List<string> Names = new List<string>();
+
+            Names.Add("Dhruv");
+
+            return Names;
+        }
+
+        /// <summary>
+        /// This is a class to Return the X and Y cords of MY character
+        /// </summary>
+        public int[] MyPlayerCords()
+        {
+            int[] CordsXY = { 1, 2, 3};
+
+            
+            return CordsXY;
         }
     }
 }

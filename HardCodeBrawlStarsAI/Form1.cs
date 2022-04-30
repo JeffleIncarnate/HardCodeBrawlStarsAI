@@ -32,8 +32,19 @@ namespace HardCodeBrawlStarsAI
         // This is a method that runs the exe of scrcpy which is a Screen mirroring platform
         private void scrcpy_Click(object sender, EventArgs e)
         {
-            string Scrcpy = @"C:\Users\hp\Downloads\scrcpy-win64-v1.23\scrcpy.exe";
-            Process.Start(Scrcpy);
+            try
+            {
+                string Scrcpy = @"C:\Users\hp\Downloads\scrcpy-win64-v1.23\scrcpy.exe";
+                Process.Start(Scrcpy);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                MessageBox.Show("Finished");
+            }
         }
 
         // This is a funciton that starts a new Thread and make a loop that will run
@@ -50,12 +61,16 @@ namespace HardCodeBrawlStarsAI
         {
             try
             {
+                // Here I am starting a new thread to Run Recognition aswell as a Loop to
+                // continueslly capture the game
                 ThreadStart ThreadChild = new ThreadStart(Data);
                 Thread thread = new Thread(ThreadChild);
                 thread.Start();
 
                 while (true)
                 {
+
+
                     //Creating a new Bitmap object
                     Bitmap captureBitmap = new Bitmap(1024, 768, PixelFormat.Format32bppArgb);
                     //Bitmap captureBitmap = new Bitmap(int width, int height, PixelFormat);
@@ -70,19 +85,21 @@ namespace HardCodeBrawlStarsAI
                     pictureBox1.Image = captureBitmap;
                 }
             }
-            catch (Exception ex)
+            catch (Exception ex) // Catch Exception and Show to Console, so the app don't crash
             {
                 MessageBox.Show(ex.Message);
             }
         }
 
-        public void Data()
+        // This is a function that has 1 object which Runs Data Recogniton on all the 
+        public void Data(/* I will add a Bitmap Param Later (Overload Issues) */)
         {
             PlayerRecognition.Recognize PlRec = new PlayerRecognition.Recognize();
             PlayerRecognation.ReadJson PlRead = new PlayerRecognation.ReadJson();
 
-            var name = PlRead.PlayerName();
-            MessageBox.Show(name);
+            string PlayerName = PlRead.PlayerName();
+            PlRec.PlayerName = PlayerName;
+            MessageBox.Show(Convert.ToString(PlayerName));
         }
     }
 }
