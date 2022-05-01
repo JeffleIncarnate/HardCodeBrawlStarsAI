@@ -83,6 +83,7 @@ namespace HardCodeBrawlStarsAI
                     captureGraphics.CopyFromScreen(captureRectangle.Left, captureRectangle.Top, 0, 0, captureRectangle.Size);
 
                     pictureBox1.Image = captureBitmap;
+                    Thread.Sleep(200);
                 }
             }
             catch (Exception ex) // Catch Exception and Show to Console, so the app don't crash

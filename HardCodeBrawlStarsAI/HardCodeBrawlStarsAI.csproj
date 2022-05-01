@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\RecognizePlayers.cs" />
     <Compile Include="PlayerRecognation\ReadJson.cs" />
     <Compile Include="PlayerRecognation\Recognize.cs" />
     <Compile Include="Form1.cs">
