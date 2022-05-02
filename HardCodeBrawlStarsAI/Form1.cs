@@ -69,8 +69,6 @@ namespace HardCodeBrawlStarsAI
 
                 while (true)
                 {
-
-
                     //Creating a new Bitmap object
                     Bitmap captureBitmap = new Bitmap(1024, 768, PixelFormat.Format32bppArgb);
                     //Bitmap captureBitmap = new Bitmap(int width, int height, PixelFormat);
@@ -95,12 +93,9 @@ namespace HardCodeBrawlStarsAI
         // This is a function that has 1 object which Runs Data Recogniton on all the 
         public void Data(/* I will add a Bitmap Param Later (Overload Issues) */)
         {
-            PlayerRecognition.Recognize PlRec = new PlayerRecognition.Recognize();
-            PlayerRecognation.ReadJson PlRead = new PlayerRecognation.ReadJson();
+            PlayerRecognation.ApiCallJSTensor api = new PlayerRecognation.ApiCallJSTensor();
 
-            string PlayerName = PlRead.PlayerName();
-            PlRec.PlayerName = PlayerName;
-            MessageBox.Show(Convert.ToString(PlayerName));
+            MessageBox.Show(Convert.ToString(api.GetData()));
         }
     }
 }
